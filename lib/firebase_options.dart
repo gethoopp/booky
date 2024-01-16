@@ -55,7 +55,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyD6Hd7PItl985IzmzV01Q4be-RWsoyHVKY',
-    appId: '1:388150270740:android:33caac961f75a90d154001',
+    appId: '1:388150270740:android:6bb9b872a1793b84154001',
     messagingSenderId: '388150270740',
     projectId: 'bookyapp-bdf55',
     storageBucket: 'bookyapp-bdf55.appspot.com',

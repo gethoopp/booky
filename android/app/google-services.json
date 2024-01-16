@@ -7,6 +7,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:388150270740:android:6bb9b872a1793b84154001",
+        "android_client_info": {
+          "package_name": "com.booky.bookyapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6Hd7PItl985IzmzV01Q4be-RWsoyHVKY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:388150270740:android:33caac961f75a90d154001",
         "android_client_info": {
           "package_name": "com.example.booky"

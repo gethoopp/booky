@@ -11,10 +11,15 @@ part 'auth_c_ubit_state.dart';
 class AuthCUbitCubit extends Cubit<AuthCUbitState> {
   AuthCUbitCubit() : super(AuthCUbitInitial());
 
-  void signIn(String email, String password) {
+  void signIn(String email, String password) async {
     try {
-      auth.createUserWithEmailAndPassword(email: email, password: password);
+      await auth.createUserWithEmailAndPassword(
+          email: email, password: password);
       emit(Authsucces(auth.currentUser));
+
+      Future.delayed(const Duration(seconds: 1), () {
+        Get.toNamed('/Logins');
+      });
     } on FirebaseAuthException catch (e) {
       emit(AuthError(
         Get.snackbar('Erorr!!', e.message.toString(),
@@ -25,11 +30,13 @@ class AuthCUbitCubit extends Cubit<AuthCUbitState> {
     }
   }
 
-  void login(String email, String password) {
+  void login(String email, String password) async {
     try {
-      auth.signInWithEmailAndPassword(email: email, password: password);
+      await auth.signInWithEmailAndPassword(email: email, password: password);
 
       emit(Authsucces(auth.currentUser));
+
+      Get.snackbar('Registrasi Succes', 'Silahkan Login untuk masuk ke dalam aplikasi');
     } on FirebaseAuthException catch (e) {
       emit(AuthError(
         Get.snackbar('Erorr!!', e.message.toString(),

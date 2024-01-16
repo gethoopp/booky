@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-late TextEditingController name;
-late TextEditingController password;
-
+TextEditingController name = TextEditingController();
+ TextEditingController password = TextEditingController();
  final auth = FirebaseAuth.instance;
+
+ 
