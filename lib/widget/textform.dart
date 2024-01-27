@@ -1,10 +1,11 @@
  import 'package:flutter/material.dart';
 
 
-SizedBox formfield(String text, TextEditingController controller, bool obsec) {
+SizedBox formfield(String text, TextEditingController controller, bool obsec, Key unique ) {
     return SizedBox(
       width: 300,
       child: TextFormField(
+        key: unique ,
         controller: controller,
         obscureText: obsec,
         keyboardType: TextInputType.emailAddress,

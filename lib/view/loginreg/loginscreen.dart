@@ -1,6 +1,8 @@
-import 'package:booky/controller/Auth/cubit/auth_c_ubit_cubit.dart';
+
+import 'package:booky/api/Auth/cubit/auth_c_ubit_cubit.dart';
 import 'package:booky/controller/controller.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:booky/widget/qappbar.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -22,36 +24,15 @@ class _LoginsState extends State<Logins> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        title: const Center(
-            child: Text(
-          'Booky',
-          style: TextStyle(color: Colors.white),
-        )),
-        leading: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconButton(
-                onPressed: () {
-                  Get.toNamed('/Login');
-                },
-                icon: const Icon(
-                  Icons.arrow_back_ios_new,
-                  color: Colors.white,
-                )),
-          ],
-        ),
-        backgroundColor: Colors.green[600],
-        toolbarHeight: 50,
-      ),
+      appBar: Qappbar(text: 'Booky',func: () => Get.offAllNamed('/Login'),),
       body: Column(children: [
         Padding(
           padding: EdgeInsets.only(top: size.height * 0.2),
-          child: Center(child: formfield('Email', name,false)),
+          child: Center(child: formfield('Email', name,false,const Key('email'))),
         ),
         Padding(
           padding: EdgeInsets.only(top: size.height * 0.05),
-          child: Center(child: formfield('Password', password,true)),
+          child: Center(child: formfield('Password', password,true,const Key('password'))),
         ),
         const Padding(
           padding: EdgeInsets.all(20),
@@ -60,10 +41,11 @@ class _LoginsState extends State<Logins> {
         SizedBox(
           width: 200,
           child: TextButton(
-            
+              key: const Key('add'),
               onPressed: () {
-                BlocProvider.of<AuthCUbitCubit>(context)
-                    .login(name.text, password.text);
+                BlocProvider.of<AuthCubit>(context)
+                    .signIn(name.text, password.text)
+                    ;
               },
               style: ButtonStyle(
                   backgroundColor: const MaterialStatePropertyAll(Colors.green),
@@ -77,6 +59,8 @@ class _LoginsState extends State<Logins> {
       ]),
     );
   }
+
+ 
 
  
 }

@@ -1,6 +1,7 @@
-import 'dart:ffi';
 
-import 'package:booky/controller/Auth/cubit/auth_c_ubit_cubit.dart';
+
+
+import 'package:booky/api/Auth/cubit/auth_c_ubit_cubit.dart';
 import 'package:booky/controller/controller.dart';
 import 'package:booky/widget/textform.dart';
 import 'package:flutter/material.dart';
@@ -47,11 +48,11 @@ class _RegisState extends State<Regis> with SingleTickerProviderStateMixin {
       body: Column(children: [
         Padding(
           padding: EdgeInsets.only(top: size.height * 0.2),
-          child: Center(child: formfield('Email', name,false)),
+          child: Center(child: formfield('Email', name,false,const Key('email'))),
         ),
         Padding(
           padding: EdgeInsets.only(top: size.height * 0.05),
-          child: Center(child: formfield('Password', password,true)),
+          child: Center(child: formfield('Password', password,true,const Key('password'))),
         ),
         const Padding(
           padding: EdgeInsets.all(20),
@@ -61,7 +62,7 @@ class _RegisState extends State<Regis> with SingleTickerProviderStateMixin {
           width: 200,
           child: TextButton(
               onPressed: () {
-                BlocProvider.of<AuthCUbitCubit>(context)
+                BlocProvider.of<AuthCubit>(context)
                     .signIn(name.text, password.text);
               },
               style: ButtonStyle(
@@ -69,7 +70,7 @@ class _RegisState extends State<Regis> with SingleTickerProviderStateMixin {
                   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)))),
               child: const Text(
-                'Login',
+                'Registration',
                 style: TextStyle(color: Colors.white),
               )),
         )

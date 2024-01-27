@@ -12,7 +12,8 @@ final class Authsucces extends AuthCUbitState {
 }
 
 final class AuthError extends AuthCUbitState {
-  late SnackbarController snackbar;
+  late SnackBar snackbar;
+
 
   AuthError(this.snackbar);
 }

@@ -1,55 +1,50 @@
 // model data from API
 
-import 'dart:convert';
+class Books {
+  Details details;
+  Details hororCat;
+  int id;
+  String? date;
 
-class DetailData {
-    Details details;
-    int id;
+  Books(
+      {required this.details,
+      required this.id,
+      required this.hororCat,
+      required this.date});
 
-    DetailData({
-        required this.details,
-        required this.id,
-    });
+  factory Books.fromJson(Map<String, dynamic> json) => Books(
+      details: Details.fromJson(json["details"]),
+      hororCat: Details.fromJson(json["hororCat"]),
+      id: json["id"],
+      date: json["date_time"]);
 
-    factory DetailData.fromRawJson(String str) => DetailData.fromJson(json.decode(str));
-
-    String toRawJson() => json.encode(toJson());
-
-    factory DetailData.fromJson(Map<String, dynamic> json) => DetailData(
-        details: Details.fromJson(json["details"]),
-        id: json["id"],
-    );
-
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "details": details.toJson(),
+        "hororCat": details.toJson(),
         "id": id,
-    };
+        "date_time" : date.toString()
+      };
 }
 
 class Details {
-    String author;
-    String image;
-    String nama;
+  String? author;
+  String? image;
+  String? nama;
+  bool? status;
 
-    Details({
-        required this.author,
-        required this.image,
-        required this.nama,
-    });
+  Details(
+      {required this.author,
+      required this.image,
+      required this.nama,
+      required this.status});
 
-    factory Details.fromRawJson(String str) => Details.fromJson(json.decode(str));
-
-    String toRawJson() => json.encode(toJson());
-
-    factory Details.fromJson(Map<String, dynamic> json) => Details(
+  factory Details.fromJson(Map<String, dynamic> json) => Details(
         author: json["Author"],
         image: json["Image"],
         nama: json["Nama"],
-    );
+        status: json["Status"],
+      );
 
-    Map<String, dynamic> toJson() => {
-        "Author": author,
-        "Image": image,
-        "Nama": nama,
-    };
+  Map<String, dynamic> toJson() =>
+      {"Author": author, "Image": image, "Nama": nama, "Status": status};
 }
